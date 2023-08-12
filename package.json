@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^7.1.5"
+  },
+  "scripts": {  
+    "build": "lerna run build",
+    "publish": "npm run build && lerna exec --since --no-private -- npm publish --tag latest --access public"
+  }
+}

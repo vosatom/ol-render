@@ -1,0 +1,23 @@
+{
+  "name": "@ol-render/core",
+  "version": "0.0.0",
+  "description": "OpenLayers renderer",
+  "keywords": [],
+  "author": "vosatom <info@tukan.zip>",
+  "license": "ISC",
+  "main": "src/index.ts",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "peerDependencies": {
+    "ol": "*",
+    "lodash": "*"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "node ./__tests__/core.test.js"
+  }
+}

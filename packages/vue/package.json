@@ -1,0 +1,27 @@
+{
+  "name": "@ol-render/vue",
+  "version": "0.0.0",
+  "description": "OpenLayers Vue renderer",
+  "keywords": [],
+  "author": "vosatom <info@tukan.zip>",
+  "license": "ISC",
+  "main": "src/index.ts",
+  "directories": {
+    "src": "src",
+    "test": "__tests__"
+  },
+  "dependencies": {
+    "@ol-render/core": "*"
+  },
+  "peerDependencies": {
+    "@vue/runtime-core": "^3.3.4",
+    "@vue/shared": "^3.3.4",
+    "lodash": "^4.17.21"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "node ./__tests__/core.test.js"
+  }
+}
