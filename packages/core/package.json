@@ -10,6 +10,9 @@
     "src": "src",
     "test": "__tests__"
   },
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "dist/packages/core/src/index.d.ts",
   "peerDependencies": {
     "ol": "*",
     "lodash": "*"
@@ -17,7 +20,9 @@
   "files": [
     "src"
   ],
+  "sideEffects": false,
   "scripts": {
-    "test": "node ./__tests__/core.test.js"
+    "clean": "rm -rf dist",
+    "build": "npm run clean && rollup -c"
   }
 }

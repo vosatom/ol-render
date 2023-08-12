@@ -1,4 +1,3 @@
-import { MetaOlFiber } from '@ol-render/vue'
 import {
   forEach,
   has,
@@ -11,6 +10,8 @@ import {
 
 import { Catalogue, CatalogueItem, CatalogueKey } from './catalogue'
 import { OlObject } from './types'
+
+export const MetaOlFiber = Symbol('MetaOlFiber');
 
 type Props = any;
 
@@ -41,11 +42,11 @@ export type Attach<
 > =
   | string
   | ((
-      parent: Omit<Instance<ParentItem>, typeof MetaOlFiber>,
-      child: Omit<Instance<ChildItem, ParentItem>, typeof MetaOlFiber>,
-      parentInstance: Instance<ParentItem>,
-      childInstance: Instance<ChildItem, ParentItem>
-    ) => Detach<ParentItem, ChildItem>);
+    parent: Omit<Instance<ParentItem>, typeof MetaOlFiber>,
+    child: Omit<Instance<ChildItem, ParentItem>, typeof MetaOlFiber>,
+    parentInstance: Instance<ParentItem>,
+    childInstance: Instance<ChildItem, ParentItem>
+  ) => Detach<ParentItem, ChildItem>);
 
 export const error002 = (containerType = '', childType = '') => new Error(
   `React-Openlayers-Fiber Error: Couldn't add this child to this container. You can specify how to attach this type of child ("${childType}") to this type of container ("${containerType}") using the "attach" props. If you think this should be done automatically, open an issue here https://github.com/crubier/react-openlayers-fiber/issues/new?title=Support+${childType}+in+${containerType}&body=Support+${childType}+in+${containerType}`,
@@ -157,9 +158,9 @@ export const getAs = <
   B extends CatalogueItem,
   K extends CatalogueKey,
 >(
-    _type: K,
-    instance: Instance<A, B>,
-  ): Instance<Catalogue[K], B> => {
+  _type: K,
+  instance: Instance<A, B>,
+): Instance<Catalogue[K], B> => {
   return instance as unknown as Instance<Catalogue[K], B>
 }
 
@@ -167,9 +168,9 @@ export const defaultAttach = <
   ParentItem extends CatalogueItem,
   ChildItem extends CatalogueItem,
 >(
-    parent: Instance<ParentItem>,
-    child: Instance<ChildItem, ParentItem>,
-  ): Detach<ParentItem, ChildItem> => {
+  parent: Instance<ParentItem>,
+  child: Instance<ChildItem, ParentItem>,
+): Detach<ParentItem, ChildItem> => {
   if (!child) { throw error001() }
 
   const { kind: parentKind } = parent[MetaOlFiber]

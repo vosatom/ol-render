@@ -10,6 +10,9 @@
     "src": "src",
     "test": "__tests__"
   },
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "dist/packages/core/src/index.d.ts",
   "dependencies": {
     "@ol-render/core": "*"
   },
@@ -21,7 +24,12 @@
   "files": [
     "src"
   ],
+  "sideEffects": false,
   "scripts": {
-    "test": "node ./__tests__/core.test.js"
+    "clean": "rm -rf dist",
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.197"
   }
 }
